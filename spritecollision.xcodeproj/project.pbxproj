@@ -25,6 +25,9 @@
 		76E5C09018AF0474009591CA /* spritecollisionTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 76E5C08F18AF0474009591CA /* spritecollisionTests.m */; };
 		76E5C09B18AF0651009591CA /* SpaceshipScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 76E5C09A18AF0651009591CA /* SpaceshipScene.m */; };
 		76E5C09F18AF14E5009591CA /* rocket.png in Resources */ = {isa = PBXBuildFile; fileRef = 76E5C09E18AF14E5009591CA /* rocket.png */; };
+		76E5C0A218AFE4BA009591CA /* Spaceship.m in Sources */ = {isa = PBXBuildFile; fileRef = 76E5C0A118AFE4BA009591CA /* Spaceship.m */; };
+		76E5C0A518B0000B009591CA /* spark.png in Resources */ = {isa = PBXBuildFile; fileRef = 76E5C0A418B0000A009591CA /* spark.png */; };
+		76E5C0A818B00609009591CA /* Missile.m in Sources */ = {isa = PBXBuildFile; fileRef = 76E5C0A718B00609009591CA /* Missile.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +66,12 @@
 		76E5C09918AF0651009591CA /* SpaceshipScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpaceshipScene.h; sourceTree = "<group>"; };
 		76E5C09A18AF0651009591CA /* SpaceshipScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpaceshipScene.m; sourceTree = "<group>"; };
 		76E5C09E18AF14E5009591CA /* rocket.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rocket.png; sourceTree = "<group>"; };
+		76E5C0A018AFE4BA009591CA /* Spaceship.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Spaceship.h; sourceTree = "<group>"; };
+		76E5C0A118AFE4BA009591CA /* Spaceship.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Spaceship.m; sourceTree = "<group>"; };
+		76E5C0A318AFEDE6009591CA /* Constants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
+		76E5C0A418B0000A009591CA /* spark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = spark.png; sourceTree = "<group>"; };
+		76E5C0A618B00609009591CA /* Missile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Missile.h; sourceTree = "<group>"; };
+		76E5C0A718B00609009591CA /* Missile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Missile.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -124,6 +133,7 @@
 		76E5C06518AF0473009591CA /* spritecollision */ = {
 			isa = PBXGroup;
 			children = (
+				76E5C0A318AFEDE6009591CA /* Constants.h */,
 				76E5C06E18AF0473009591CA /* AppDelegate.h */,
 				76E5C06F18AF0473009591CA /* AppDelegate.m */,
 				76E5C07118AF0474009591CA /* Main.storyboard */,
@@ -133,8 +143,13 @@
 				76E5C07818AF0474009591CA /* MyScene.m */,
 				76E5C09918AF0651009591CA /* SpaceshipScene.h */,
 				76E5C09A18AF0651009591CA /* SpaceshipScene.m */,
+				76E5C0A018AFE4BA009591CA /* Spaceship.h */,
+				76E5C0A118AFE4BA009591CA /* Spaceship.m */,
+				76E5C0A618B00609009591CA /* Missile.h */,
+				76E5C0A718B00609009591CA /* Missile.m */,
 				76E5C07C18AF0474009591CA /* Images.xcassets */,
 				76E5C09E18AF14E5009591CA /* rocket.png */,
+				76E5C0A418B0000A009591CA /* spark.png */,
 				76E5C06618AF0473009591CA /* Supporting Files */,
 			);
 			path = spritecollision;
@@ -245,6 +260,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				76E5C0A518B0000B009591CA /* spark.png in Resources */,
 				76E5C06A18AF0473009591CA /* InfoPlist.strings in Resources */,
 				76E5C09F18AF14E5009591CA /* rocket.png in Resources */,
 				76E5C07D18AF0474009591CA /* Images.xcassets in Resources */,
@@ -269,6 +285,8 @@
 			files = (
 				76E5C07918AF0474009591CA /* MyScene.m in Sources */,
 				76E5C07618AF0474009591CA /* ViewController.m in Sources */,
+				76E5C0A218AFE4BA009591CA /* Spaceship.m in Sources */,
+				76E5C0A818B00609009591CA /* Missile.m in Sources */,
 				76E5C09B18AF0651009591CA /* SpaceshipScene.m in Sources */,
 				76E5C07018AF0473009591CA /* AppDelegate.m in Sources */,
 				76E5C06C18AF0473009591CA /* main.m in Sources */,

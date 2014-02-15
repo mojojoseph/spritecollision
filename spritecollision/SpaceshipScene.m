@@ -7,27 +7,30 @@
 //
 
 #import "SpaceshipScene.h"
+#import "Spaceship.h"
+#import "Constants.h"
 
 @interface SpaceshipScene() <SKPhysicsContactDelegate>
+
+@property Spaceship* spaceship;
 @property BOOL contentCreated;
-@property (nonatomic, strong) SKSpriteNode* spaceship;
-@property BOOL shieldRaised;
+
 @end
 
 @implementation SpaceshipScene
 
 @synthesize spaceship = _spaceship;
 
+
 -(id)initWithSize:(CGSize)size {
   NSLog(@"initWithSize");
   if (self = [super initWithSize:size]) {
     
     self.physicsWorld.contactDelegate = self;
+    self.physicsWorld.gravity         = CGVectorMake(0.0, -0.5);
 
   }
-  
-  
-  
+
   return self;
 }
 
@@ -43,7 +46,7 @@
   self.backgroundColor = [SKColor blackColor];
   self.scaleMode       = SKSceneScaleModeAspectFill;
   
-  self.spaceship = [self newSpaceship];
+  self.spaceship = [[Spaceship alloc]init];
   
   self.spaceship.position = CGPointMake(CGRectGetMidX(self.frame), CGRectGetMidY(self.frame));
   [self addChild:self.spaceship];
@@ -51,13 +54,12 @@
   [self addShieldButton];
   [self addRotateLeftButton];
   [self addRotateRightButton];
-  
-  self.shieldRaised = NO;
+  [self addFireButton];
   
   /* Make some rocks */
   SKAction *makeRocks = [SKAction sequence: @[
                                               [SKAction performSelector:@selector(addRock) onTarget:self],
-                                              [SKAction waitForDuration:0.10 withRange:0.15]
+                                              [SKAction waitForDuration:1.0 withRange:0.15]
                                               ]];
   [self runAction: [SKAction repeatActionForever:makeRocks]];
 }
@@ -66,19 +68,25 @@
   UITouch* touch = [touches anyObject];
   CGPoint  location = [touch locationInNode:self];
   SKNode*  node = [self nodeAtPoint:location];
+  
   if ([node.name isEqualToString:@"shields"]) {
     NSLog(@"raise shields!");
-    [self shieldOnSpaceship:YES];
+    [self.spaceship raiseShields];
+  }
+  
+  if ([node.name isEqualToString:@"fire"]) {
+    NSLog(@"fire");
+    [self.spaceship fire];
   }
   
   if ([node.name isEqualToString:@"rotate_left"]) {
     NSLog(@"rotate left");
-    [self rotateLeft:YES];
+    [self.spaceship rotateLeft:YES];
   }
   
   if ([node.name isEqualToString:@"rotate_right"]) {
     NSLog(@"rotate right");
-    [self rotateRight:YES];
+    [self.spaceship rotateRight:YES];
   }
 
 }
@@ -90,17 +98,17 @@
   
   if ([node.name isEqualToString:@"shields"]) {
     NSLog(@"lower shields!");
-    [self shieldOnSpaceship:NO];
+    [self.spaceship lowerShields];
   }
   
   if ([node.name isEqualToString:@"rotate_left"]) {
     NSLog(@"stop rotate left");
-    [self rotateLeft:NO];
+    [self.spaceship rotateLeft:NO];
   }
   
   if ([node.name isEqualToString:@"rotate_right"]) {
     NSLog(@"stop rotate right");
-    [self rotateRight:NO];
+    [self.spaceship rotateRight:NO];
   }
 
 }
@@ -110,7 +118,6 @@
   SKShapeNode* button = [[SKShapeNode alloc]init];
   button.position     = CGPointMake(self.spaceship.position.x - 300,
                                     self.spaceship.position.y - 100);
-
   
   CGMutablePathRef thePath = CGPathCreateMutable();
   CGPathAddArc(thePath, NULL, 0, 0, 20, 0.f, (360* M_PI)/180, NO);
@@ -166,82 +173,26 @@
   
 }
 
-
--(void)rotateLeft:(BOOL)rotate {
+-(void)addFireButton {
+  SKShapeNode* button = [[SKShapeNode alloc]init];
+  button.position     = CGPointMake(self.spaceship.position.x + 300,
+                                    self.spaceship.position.y - 100);
   
-  if (rotate) {
-    SKAction* oneRevolution = [SKAction rotateByAngle:M_PI*2 duration: 5.0];
-    SKAction* repeat        = [SKAction repeatActionForever:oneRevolution];
-    [self.spaceship runAction:repeat withKey:@"rotating_left"];
-  } else {
-    [self.spaceship removeActionForKey:@"rotating_left"];
-  }
+  CGMutablePathRef thePath = CGPathCreateMutable();
+  CGPathAddArc(thePath, NULL, 0, 0, 20, 0.f, (360* M_PI)/180, NO);
+  CGPathCloseSubpath(thePath);
   
-}
-
--(void)rotateRight:(BOOL)rotate {
+  button.name = @"fire";
+  button.path = thePath;
+  button.fillColor = [SKColor redColor];
+  button.strokeColor = [SKColor redColor];
+  button.glowWidth = 5;
   
-  if (rotate) {
-    SKAction* oneRevolution = [SKAction rotateByAngle:-M_PI*2 duration: 5.0];
-    SKAction* repeat        = [SKAction repeatActionForever:oneRevolution];
-    [self.spaceship runAction:repeat withKey:@"rotating_right"];
-  } else {
-    [self.spaceship removeActionForKey:@"rotating_right"];
-  }
+  [self addChild:button];
   
 }
 
--(void)shieldOnSpaceship:(BOOL)raise {
-  if (raise && !self.shieldRaised) {
-    SKShapeNode* shield = [[SKShapeNode alloc]init];
-    shield.position     = CGPointMake(0, 0);
-    
-    CGMutablePathRef thePath = CGPathCreateMutable();
-    CGPathAddArc(thePath, NULL, 0, 0, 40, 0.f, (360* M_PI)/180, NO);
-    CGPathCloseSubpath(thePath);
-    
-    shield.name = @"shield";
-    shield.path = thePath;
-    shield.strokeColor = [SKColor yellowColor];
-    shield.glowWidth = 10;
-    
-    [self.spaceship addChild:shield];
-    self.spaceship.physicsBody = [SKPhysicsBody bodyWithCircleOfRadius:40.f];
-    self.spaceship.physicsBody.dynamic = NO;
-    self.spaceship.physicsBody.categoryBitMask = shieldCategory;
-    self.spaceship.physicsBody.collisionBitMask = 0;//shipCategory | asteroidCategory | planetCategory;
-    self.spaceship.physicsBody.contactTestBitMask = 0;
-    
-    self.shieldRaised = YES;
-    return;
-  }
-  
-  if (!raise && self.shieldRaised) {
-    NSLog(@"lower shields");
-    SKNode* shield = [self.spaceship childNodeWithName:@"shield"];
-    
-    SKAction* fadeAway = [SKAction fadeOutWithDuration: 1.0];
-    SKAction* removePhysicsBody = [SKAction runBlock:^{
-      
-      self.spaceship.physicsBody = [SKPhysicsBody bodyWithCircleOfRadius:40.f];
-      self.spaceship.physicsBody.dynamic = NO;
-      self.spaceship.physicsBody.categoryBitMask = shipCategory;
-      self.spaceship.physicsBody.collisionBitMask = 0;//shipCategory | asteroidCategory | planetCategory;
-      self.spaceship.physicsBody.contactTestBitMask = 0;//shipCategory | asteroidCategory | planetCategory;
-      
-      
-      
-    }];
-    SKAction* remove   = [SKAction removeFromParent];
-    SKAction* moveSequence = [SKAction sequence:@[fadeAway, removePhysicsBody, remove]];
-    [shield runAction: moveSequence completion:^{
-      self.shieldRaised = NO;
-    }];
 
-    return;
-  }
-  
-}
 
 /* Rocks */
 static inline CGFloat skRandf() {
@@ -258,60 +209,16 @@ static inline CGFloat skRand(CGFloat low, CGFloat high) {
   rock.position = CGPointMake(skRand(0, self.size.width), self.size.height - 50);
   rock.name     = @"rock";
   rock.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:rock.size];
+  rock.physicsBody.velocity = CGVectorMake(-1.0, 0);
+  rock.physicsBody.mass     = 100;
   rock.physicsBody.usesPreciseCollisionDetection = YES;
-  rock.physicsBody.categoryBitMask = rockCategory;
+  rock.physicsBody.categoryBitMask    = rockCategory;
   rock.physicsBody.contactTestBitMask = shipCategory;
   rock.physicsBody.collisionBitMask   = shieldCategory;
   [self addChild:rock];
 }
 
 
--(SKSpriteNode*)newSpaceship {
-  //  SKSpriteNode* hull = [[SKSpriteNode alloc]initWithColor:[SKColor grayColor] size:CGSizeMake(64, 32)];
-  
-  SKSpriteNode* hull = [SKSpriteNode spriteNodeWithImageNamed:@"rocket.png"];
-  hull.position = CGPointMake(100,100);
-  
-  
-#if 0
-  SKAction* hover = [SKAction sequence:@[
-                                         [SKAction waitForDuration:1.0],
-                                         [SKAction moveByX:100 y:50.0 duration:1.0],
-                                         [SKAction waitForDuration:1.0],
-                                         [SKAction moveByX:-100 y:-50 duration:1]]];
-  [hull runAction:[SKAction repeatActionForever:hover]];
-#endif
-  
-  SKSpriteNode *light1 = [self newLight];
-  light1.position = CGPointMake(-28.0, 6.0);
-  [hull addChild:light1];
-  
-  SKSpriteNode *light2 = [self newLight];
-  light2.position = CGPointMake(28.0, 6.0);
-  [hull addChild:light2];
- 
-  hull.physicsBody = [SKPhysicsBody bodyWithCircleOfRadius:40.f];
-  hull.physicsBody.dynamic = NO;
-  hull.physicsBody.categoryBitMask = shipCategory;
-  hull.physicsBody.collisionBitMask = 0;//shipCategory | asteroidCategory | planetCategory;
-  hull.physicsBody.contactTestBitMask = 0;//shipCategory | asteroidCategory | planetCategory;
-
-  
-  return hull;
-}
-
-- (SKSpriteNode *)newLight
-{
-  SKSpriteNode *light = [[SKSpriteNode alloc] initWithColor:[SKColor yellowColor] size:CGSizeMake(8,8)];
-  
-  SKAction *blink = [SKAction sequence:@[
-                                         [SKAction fadeOutWithDuration:0.25],
-                                         [SKAction fadeInWithDuration:0.25]]];
-  SKAction *blinkForever = [SKAction repeatActionForever:blink];
-  [light runAction: blinkForever];
-  
-  return light;
-}
 
 #pragma mark Physics
 -(void)didSimulatePhysics {
@@ -321,10 +228,6 @@ static inline CGFloat skRand(CGFloat low, CGFloat high) {
     }
   }];
 }
-
-static const uint32_t rockCategory   =  0x1 << 0;
-static const uint32_t shipCategory   =  0x1 << 1;
-static const uint32_t shieldCategory =  0x1 << 2;
 
 - (void)didBeginContact:(SKPhysicsContact*)contact
 {
@@ -340,13 +243,65 @@ static const uint32_t shieldCategory =  0x1 << 2;
   }
   
   if ((firstBody.categoryBitMask & rockCategory) != 0) {
-    NSLog(@"destroy the rock and color the ship");
-    SKAction *pulseRed = [SKAction sequence:@[
-                                              [SKAction colorizeWithColor:[SKColor redColor] colorBlendFactor:1.0 duration:0.15],
-                                              [SKAction waitForDuration:0.1],
-                                              [SKAction colorizeWithColorBlendFactor:0.0 duration:0.15]]];     [self.spaceship runAction: pulseRed];
+    
+    if ((secondBody.categoryBitMask & shipCategory) != 0) {
+      [self.spaceship takeDamage];
+    } else {
+      NSLog(@"missle hit rock");
+    }
+    
+    SKNode* rock = firstBody.node;
+    
+    SKAction* fade = [SKAction fadeOutWithDuration:0.5];
+    SKAction* remove = [SKAction removeFromParent];
+    SKAction* sequence = [SKAction sequence:@[fade, remove]];
+    [rock runAction:sequence];
 
+    SKEmitterNode *ex = [self newExplosion];
+    ex.position = contact.bodyB.node.position;
   }
+}
+
+
+
+
+
+
+
+-(SKEmitterNode*)newExplosion {
+  NSLog(@"explode");
+
+
+  SKEmitterNode *explosion = [[SKEmitterNode alloc] init];
+  [explosion setParticleTexture:[SKTexture textureWithImageNamed:@"spark.png"]];
+  [explosion setParticleColor:[UIColor redColor]];
+  [explosion setNumParticlesToEmit:20];
+  [explosion setParticleBirthRate:450];
+  [explosion setParticleLifetime:1];
+  [explosion setEmissionAngleRange:360];
+  [explosion setParticleSpeed:100];
+  [explosion setParticleSpeedRange:50];
+  [explosion setXAcceleration:0];
+  [explosion setYAcceleration:0];
+  [explosion setParticleAlpha:0.8];
+  [explosion setParticleAlphaRange:0.2];
+  [explosion setParticleAlphaSpeed:-0.5];
+  [explosion setParticleScale:0.75];
+  [explosion setParticleScaleRange:0.4];
+  [explosion setParticleScaleSpeed:-0.5];
+  [explosion setParticleRotation:0];
+  [explosion setParticleRotationRange:0];
+  [explosion setParticleRotationSpeed:0];
+  
+  [explosion setParticleColorBlendFactor:1];
+  [explosion setParticleColorBlendFactorRange:0];
+  [explosion setParticleColorBlendFactorSpeed:0];
+  [explosion setParticleBlendMode:SKBlendModeAdd];
+  
+  //add this node to parent node
+  [self addChild:explosion];
+  
+  return explosion;
 }
 
 @end
