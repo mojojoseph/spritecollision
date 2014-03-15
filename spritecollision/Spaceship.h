@@ -17,7 +17,8 @@
 -(void)rotateRight:(BOOL)rotate;
 -(void)fire;
 
--(void)takeDamage;
+-(NSInteger)takeDamage;
+-(NSInteger)currentHealth;
 -(void)explode;
 
 @end

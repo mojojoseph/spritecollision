@@ -9,6 +9,13 @@
 #import "Spaceship.h"
 #import "Missile.h"
 #import "Constants.h"
+#import "Logging.h"
+
+#ifdef DEBUG
+static const int ddLogLevel = LOG_LEVEL_VERBOSE;
+#else
+static const int ddLogLevel = LOG_LEVEL_ERROR;
+#endif
 
 @interface Spaceship()
 
@@ -21,24 +28,17 @@
 
 @synthesize health = _health;
 
+static const NSInteger initialHealth = 5;
+
 -(Spaceship*)init {
   
   self = [super initWithTexture:[SKTexture textureWithImageNamed:@"rocket.png"]];
   
   if (self) {
     self.position = CGPointMake(100,100);
-    
-    SKSpriteNode *light1 = [self newLight];
-    light1.position = CGPointMake(-28.0, 6.0);
-    [self addChild:light1];
-    
-    SKSpriteNode *light2 = [self newLight];
-    light2.position = CGPointMake(28.0, 6.0);
-    [self addChild:light2];
-    
     self.physicsBody = [self shieldsDownPhysicsBody];
     self.shieldRaised = NO;
-    self.health       = 20;
+    self.health       = initialHealth;
 
   }
   
@@ -82,7 +82,10 @@
     shield.strokeColor = [SKColor yellowColor];
     shield.glowWidth = 10;
     
+    SKAction* shieldsUpSound = [SKAction playSoundFileNamed:@"shieldon.caf" waitForCompletion:NO];
     [self addChild:shield];
+    [self runAction:[SKAction group:@[shieldsUpSound]]];
+    
     self.physicsBody = [self shieldsUpPhysicsBody];
     self.shieldRaised = YES;
     return;
@@ -98,7 +101,7 @@
     SKAction* shieldsDownPhysics = [SKAction runBlock:^{
       self.physicsBody = [self shieldsDownPhysicsBody];
     }];
-    SKAction* remove   = [SKAction removeFromParent];
+    SKAction* remove       = [SKAction removeFromParent];
     SKAction* moveSequence = [SKAction sequence:@[fadeAway, shieldsDownPhysics, remove]];
     [shield runAction: moveSequence completion:^{
       self.shieldRaised = NO;
@@ -117,15 +120,26 @@
   CGFloat xDirection = -sinf(self.zRotation);
   CGFloat yDirection =  cosf(self.zRotation);
 
-  NSLog(@"Current z-rotation is %f, unit velocity vector is %f, %f", self.zRotation, xDirection, yDirection);
+  //  NSLog(@"Current z-rotation is %f, unit velocity vector is %f, %f", self.zRotation, xDirection, yDirection);
   
-  Missile* missle = [[Missile alloc]initAtPoint:self.position inDirection:CGPointMake(xDirection, yDirection)];
-  [self.scene addChild:missle];
+  Missile* m = [[Missile alloc]initAtPoint:self.position
+                               inDirection:CGPointMake(xDirection, yDirection)];
+  
+  SKAction* playSound = [SKAction playSoundFileNamed:@"fire.caf" waitForCompletion:NO];
+  
+  [self.scene runAction:playSound completion:^{
+    [self.scene addChild:m];
+  }];
+
+  
+
 }
 
 #pragma mark Rotation
 -(void)rotateLeft:(BOOL)rotate {
-  
+  ENTRY_LOG;
+  [self removeActionForKey:@"rotating_right"];
+
   if (rotate) {
     SKAction* oneRevolution = [SKAction rotateByAngle:M_PI*2 duration: 2.0];
     SKAction* repeat        = [SKAction repeatActionForever:oneRevolution];
@@ -137,7 +151,9 @@
 }
 
 -(void)rotateRight:(BOOL)rotate {
-  
+  ENTRY_LOG;
+  [self removeActionForKey:@"rotating_left"];
+
   if (rotate) {
     SKAction* oneRevolution = [SKAction rotateByAngle:-M_PI*2 duration: 2.0];
     SKAction* repeat        = [SKAction repeatActionForever:oneRevolution];
@@ -168,7 +184,7 @@
 }
 
 #pragma mark Damage
--(void)takeDamage {
+-(NSInteger)takeDamage {
 
   
   self.health--;
@@ -183,14 +199,72 @@
   
   NSLog(@"takeDamage, health is now %d", self.health);
   
-  if (self.health == 0) {
-    [self explode];
-  }
+  return self.health;
   
+}
+
+-(NSInteger)currentHealth {
+  return self.health;
 }
 
 -(void)explode {
   
+  ENTRY_LOG;
+  
+  
+  SKAction* fadeAndExplode =
+  [SKAction group:@[[SKAction fadeOutWithDuration:0.1],
+                    [SKAction playSoundFileNamed:@"explosion.caf" waitForCompletion:NO]]];
+  
+  SKAction* remove =   [SKAction removeFromParent];
+  SKAction* sequence = [SKAction sequence:@[fadeAndExplode, remove]];
+  
+  [self runAction:sequence];
+  
+  SKEmitterNode* explosion = [self newExplosion];
+  explosion.position = self.position;
+  
+  // Add this node to parent node
+  [self.scene addChild:explosion];
+  
+  EXIT_LOG;
+  
 }
+
+-(SKEmitterNode*)newExplosion {
+  
+  ENTRY_LOG;
+    
+    
+    SKEmitterNode *explosion = [[SKEmitterNode alloc] init];
+    [explosion setParticleTexture:[SKTexture textureWithImageNamed:@"spark.png"]];
+    [explosion setParticleColor:[UIColor blueColor]];
+    [explosion setNumParticlesToEmit:100];
+    [explosion setParticleBirthRate:450];
+    [explosion setParticleLifetime:2];
+    [explosion setEmissionAngleRange:360];
+    [explosion setParticleSpeed:100];
+    [explosion setParticleSpeedRange:50];
+    [explosion setXAcceleration:0];
+    [explosion setYAcceleration:0];
+    [explosion setParticleAlpha:0.8];
+    [explosion setParticleAlphaRange:0.2];
+    [explosion setParticleAlphaSpeed:-0.5];
+    [explosion setParticleScale:0.75];
+    [explosion setParticleScaleRange:0.4];
+    [explosion setParticleScaleSpeed:-0.5];
+    [explosion setParticleRotation:0];
+    [explosion setParticleRotationRange:0];
+    [explosion setParticleRotationSpeed:0];
+    [explosion setParticleColorBlendFactor:1];
+    [explosion setParticleColorBlendFactorRange:0];
+    [explosion setParticleColorBlendFactorSpeed:0];
+    [explosion setParticleBlendMode:SKBlendModeAdd];
+    
+  
+    return explosion;
+  }
+
+
 
 @end

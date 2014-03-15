@@ -8,12 +8,30 @@
 
 #import "AppDelegate.h"
 
+#ifdef DEBUG
+static const int ddLogLevel = LOG_LEVEL_VERBOSE;
+#else
+static const int ddLogLevel = LOG_LEVEL_ERROR;
+#endif
+
+@interface AppDelegate()
+
+@property (strong, nonatomic) DDFileLogger* fileLogger;
+
+@end
+
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    // Override point for customization after application launch.
-    return YES;
+  // Lumberjack
+  [DDLog addLogger:[DDTTYLogger sharedInstance]];
+  self.fileLogger = [[DDFileLogger alloc] init];
+  self.fileLogger.rollingFrequency =  60 * 60 * 24; // 1 hour rolling
+  self.fileLogger.logFileManager.maximumNumberOfLogFiles = 7;
+  self.fileLogger.maximumFileSize = 384 * 1024; // 384K
+  [self.fileLogger setLogFormatter:[[DDLogFileFormatterDefault alloc]init]];
+  [DDLog addLogger:self.fileLogger];    return YES;
 }
 							
 - (void)applicationWillResignActive:(UIApplication *)application

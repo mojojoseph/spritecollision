@@ -16,12 +16,13 @@
   if (self) {
     self.position = point;
     self.name     = @"missle";
-    self.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:self.size];
-    self.physicsBody.velocity = CGVectorMake(1000.00*direction.x, 1000*direction.y);
-    self.physicsBody.mass     = 0;
+    self.physicsBody                               = [SKPhysicsBody bodyWithRectangleOfSize:self.size];
+    self.physicsBody.velocity                      = CGVectorMake(1000.00*direction.x, 1000*direction.y);
+    self.physicsBody.mass                          = 0;
     self.physicsBody.usesPreciseCollisionDetection = YES;
-    self.physicsBody.categoryBitMask    = missleCategory;
-    self.physicsBody.contactTestBitMask = rockCategory;    // Tell us when we make contact with a rock
+    self.physicsBody.categoryBitMask    = missileCategory;
+    self.physicsBody.contactTestBitMask = rockCategory | bonusCategory;    // Contact with a rock
+                                                                           // or bonus object
     self.physicsBody.collisionBitMask   = 0;
   }
   return self;

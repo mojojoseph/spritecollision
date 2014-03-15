@@ -7,6 +7,20 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		763CBB2D18B1205D00F58409 /* BonusGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 763CBB2C18B1205D00F58409 /* BonusGenerator.m */; };
+		765B025F18C6D12D0061DB27 /* SureShot.caf in Resources */ = {isa = PBXBuildFile; fileRef = 765B025E18C6D12D0061DB27 /* SureShot.caf */; };
+		766A9E5E18B44C8600DE18DB /* CLIColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 766A9E4A18B44C8600DE18DB /* CLIColor.m */; };
+		766A9E5F18B44C8600DE18DB /* DDAbstractDatabaseLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 766A9E4C18B44C8600DE18DB /* DDAbstractDatabaseLogger.m */; };
+		766A9E6018B44C8600DE18DB /* DDASLLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 766A9E4E18B44C8600DE18DB /* DDASLLogger.m */; };
+		766A9E6118B44C8600DE18DB /* DDFileLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 766A9E5018B44C8600DE18DB /* DDFileLogger.m */; };
+		766A9E6218B44C8600DE18DB /* DDLog.m in Sources */ = {isa = PBXBuildFile; fileRef = 766A9E5318B44C8600DE18DB /* DDLog.m */; };
+		766A9E6318B44C8600DE18DB /* DDTTYLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 766A9E5518B44C8600DE18DB /* DDTTYLogger.m */; };
+		766A9E6418B44C8600DE18DB /* DDContextFilterLogFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 766A9E5818B44C8600DE18DB /* DDContextFilterLogFormatter.m */; };
+		766A9E6518B44C8600DE18DB /* DDDispatchQueueLogFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 766A9E5A18B44C8600DE18DB /* DDDispatchQueueLogFormatter.m */; };
+		766A9E6618B44C8600DE18DB /* DDMultiFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 766A9E5C18B44C8600DE18DB /* DDMultiFormatter.m */; };
+		766A9E6718B44C8600DE18DB /* README.txt in Resources */ = {isa = PBXBuildFile; fileRef = 766A9E5D18B44C8600DE18DB /* README.txt */; };
+		766A9E6A18B45DE600DE18DB /* gameover.caf in Resources */ = {isa = PBXBuildFile; fileRef = 766A9E6918B45DE600DE18DB /* gameover.caf */; };
+		766A9E6C18B45F4D00DE18DB /* gameover.png in Resources */ = {isa = PBXBuildFile; fileRef = 766A9E6B18B45F4D00DE18DB /* gameover.png */; };
 		76E5C05E18AF0472009591CA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 76E5C05D18AF0472009591CA /* Foundation.framework */; };
 		76E5C06018AF0472009591CA /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 76E5C05F18AF0472009591CA /* CoreGraphics.framework */; };
 		76E5C06218AF0473009591CA /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 76E5C06118AF0473009591CA /* UIKit.framework */; };
@@ -28,6 +42,15 @@
 		76E5C0A218AFE4BA009591CA /* Spaceship.m in Sources */ = {isa = PBXBuildFile; fileRef = 76E5C0A118AFE4BA009591CA /* Spaceship.m */; };
 		76E5C0A518B0000B009591CA /* spark.png in Resources */ = {isa = PBXBuildFile; fileRef = 76E5C0A418B0000A009591CA /* spark.png */; };
 		76E5C0A818B00609009591CA /* Missile.m in Sources */ = {isa = PBXBuildFile; fileRef = 76E5C0A718B00609009591CA /* Missile.m */; };
+		76E5C0AB18B02DA7009591CA /* SpaceGame.m in Sources */ = {isa = PBXBuildFile; fileRef = 76E5C0AA18B02DA7009591CA /* SpaceGame.m */; };
+		76E5C0AD18B03759009591CA /* asteroid.png in Resources */ = {isa = PBXBuildFile; fileRef = 76E5C0AC18B03759009591CA /* asteroid.png */; };
+		76E5C0B018B07900009591CA /* BonusSprite.m in Sources */ = {isa = PBXBuildFile; fileRef = 76E5C0AF18B07900009591CA /* BonusSprite.m */; };
+		76E5C0B218B079B4009591CA /* cherry.png in Resources */ = {isa = PBXBuildFile; fileRef = 76E5C0B118B079B4009591CA /* cherry.png */; };
+		76E5C0B718B0876F009591CA /* shieldon.caf in Resources */ = {isa = PBXBuildFile; fileRef = 76E5C0B618B0876F009591CA /* shieldon.caf */; };
+		76E5C0B918B08B51009591CA /* idiot.caf in Resources */ = {isa = PBXBuildFile; fileRef = 76E5C0B818B08B51009591CA /* idiot.caf */; };
+		76E5C0BB18B090BC009591CA /* explosion.caf in Resources */ = {isa = PBXBuildFile; fileRef = 76E5C0BA18B090BC009591CA /* explosion.caf */; };
+		76E5C0BD18B090F0009591CA /* fire.caf in Resources */ = {isa = PBXBuildFile; fileRef = 76E5C0BC18B090F0009591CA /* fire.caf */; };
+		76E5C0BF18B09814009591CA /* oooh.caf in Resources */ = {isa = PBXBuildFile; fileRef = 76E5C0BE18B09814009591CA /* oooh.caf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -41,6 +64,32 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		763CBB2B18B1205D00F58409 /* BonusGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BonusGenerator.h; sourceTree = "<group>"; };
+		763CBB2C18B1205D00F58409 /* BonusGenerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BonusGenerator.m; sourceTree = "<group>"; };
+		765B025E18C6D12D0061DB27 /* SureShot.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = SureShot.caf; sourceTree = "<group>"; };
+		766A9E4918B44C8600DE18DB /* CLIColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLIColor.h; sourceTree = "<group>"; };
+		766A9E4A18B44C8600DE18DB /* CLIColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLIColor.m; sourceTree = "<group>"; };
+		766A9E4B18B44C8600DE18DB /* DDAbstractDatabaseLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDAbstractDatabaseLogger.h; sourceTree = "<group>"; };
+		766A9E4C18B44C8600DE18DB /* DDAbstractDatabaseLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDAbstractDatabaseLogger.m; sourceTree = "<group>"; };
+		766A9E4D18B44C8600DE18DB /* DDASLLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDASLLogger.h; sourceTree = "<group>"; };
+		766A9E4E18B44C8600DE18DB /* DDASLLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDASLLogger.m; sourceTree = "<group>"; };
+		766A9E4F18B44C8600DE18DB /* DDFileLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDFileLogger.h; sourceTree = "<group>"; };
+		766A9E5018B44C8600DE18DB /* DDFileLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDFileLogger.m; sourceTree = "<group>"; };
+		766A9E5118B44C8600DE18DB /* DDLog+LOGV.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "DDLog+LOGV.h"; sourceTree = "<group>"; };
+		766A9E5218B44C8600DE18DB /* DDLog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDLog.h; sourceTree = "<group>"; };
+		766A9E5318B44C8600DE18DB /* DDLog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDLog.m; sourceTree = "<group>"; };
+		766A9E5418B44C8600DE18DB /* DDTTYLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDTTYLogger.h; sourceTree = "<group>"; };
+		766A9E5518B44C8600DE18DB /* DDTTYLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDTTYLogger.m; sourceTree = "<group>"; };
+		766A9E5718B44C8600DE18DB /* DDContextFilterLogFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDContextFilterLogFormatter.h; sourceTree = "<group>"; };
+		766A9E5818B44C8600DE18DB /* DDContextFilterLogFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDContextFilterLogFormatter.m; sourceTree = "<group>"; };
+		766A9E5918B44C8600DE18DB /* DDDispatchQueueLogFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDDispatchQueueLogFormatter.h; sourceTree = "<group>"; };
+		766A9E5A18B44C8600DE18DB /* DDDispatchQueueLogFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDDispatchQueueLogFormatter.m; sourceTree = "<group>"; };
+		766A9E5B18B44C8600DE18DB /* DDMultiFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDMultiFormatter.h; sourceTree = "<group>"; };
+		766A9E5C18B44C8600DE18DB /* DDMultiFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDMultiFormatter.m; sourceTree = "<group>"; };
+		766A9E5D18B44C8600DE18DB /* README.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.txt; sourceTree = "<group>"; };
+		766A9E6818B44CBB00DE18DB /* Logging.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Logging.h; sourceTree = "<group>"; };
+		766A9E6918B45DE600DE18DB /* gameover.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = gameover.caf; sourceTree = "<group>"; };
+		766A9E6B18B45F4D00DE18DB /* gameover.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gameover.png; sourceTree = "<group>"; };
 		76E5C05A18AF0472009591CA /* spritecollision.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = spritecollision.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		76E5C05D18AF0472009591CA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		76E5C05F18AF0472009591CA /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -72,6 +121,17 @@
 		76E5C0A418B0000A009591CA /* spark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = spark.png; sourceTree = "<group>"; };
 		76E5C0A618B00609009591CA /* Missile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Missile.h; sourceTree = "<group>"; };
 		76E5C0A718B00609009591CA /* Missile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Missile.m; sourceTree = "<group>"; };
+		76E5C0A918B02DA7009591CA /* SpaceGame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SpaceGame.h; path = ../SpaceGame.h; sourceTree = "<group>"; };
+		76E5C0AA18B02DA7009591CA /* SpaceGame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SpaceGame.m; path = ../SpaceGame.m; sourceTree = "<group>"; };
+		76E5C0AC18B03759009591CA /* asteroid.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = asteroid.png; sourceTree = "<group>"; };
+		76E5C0AE18B07900009591CA /* BonusSprite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BonusSprite.h; sourceTree = "<group>"; };
+		76E5C0AF18B07900009591CA /* BonusSprite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BonusSprite.m; sourceTree = "<group>"; };
+		76E5C0B118B079B4009591CA /* cherry.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cherry.png; sourceTree = "<group>"; };
+		76E5C0B618B0876F009591CA /* shieldon.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = shieldon.caf; sourceTree = "<group>"; };
+		76E5C0B818B08B51009591CA /* idiot.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = idiot.caf; sourceTree = "<group>"; };
+		76E5C0BA18B090BC009591CA /* explosion.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = explosion.caf; sourceTree = "<group>"; };
+		76E5C0BC18B090F0009591CA /* fire.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = fire.caf; sourceTree = "<group>"; };
+		76E5C0BE18B09814009591CA /* oooh.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = oooh.caf; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +159,49 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		766A9E4718B44C8600DE18DB /* Lumberjack */ = {
+			isa = PBXGroup;
+			children = (
+				766A9E4818B44C8600DE18DB /* CLI */,
+				766A9E4B18B44C8600DE18DB /* DDAbstractDatabaseLogger.h */,
+				766A9E4C18B44C8600DE18DB /* DDAbstractDatabaseLogger.m */,
+				766A9E4D18B44C8600DE18DB /* DDASLLogger.h */,
+				766A9E4E18B44C8600DE18DB /* DDASLLogger.m */,
+				766A9E4F18B44C8600DE18DB /* DDFileLogger.h */,
+				766A9E5018B44C8600DE18DB /* DDFileLogger.m */,
+				766A9E5118B44C8600DE18DB /* DDLog+LOGV.h */,
+				766A9E5218B44C8600DE18DB /* DDLog.h */,
+				766A9E5318B44C8600DE18DB /* DDLog.m */,
+				766A9E5418B44C8600DE18DB /* DDTTYLogger.h */,
+				766A9E5518B44C8600DE18DB /* DDTTYLogger.m */,
+				766A9E5618B44C8600DE18DB /* Extensions */,
+			);
+			path = Lumberjack;
+			sourceTree = "<group>";
+		};
+		766A9E4818B44C8600DE18DB /* CLI */ = {
+			isa = PBXGroup;
+			children = (
+				766A9E4918B44C8600DE18DB /* CLIColor.h */,
+				766A9E4A18B44C8600DE18DB /* CLIColor.m */,
+			);
+			path = CLI;
+			sourceTree = "<group>";
+		};
+		766A9E5618B44C8600DE18DB /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				766A9E5718B44C8600DE18DB /* DDContextFilterLogFormatter.h */,
+				766A9E5818B44C8600DE18DB /* DDContextFilterLogFormatter.m */,
+				766A9E5918B44C8600DE18DB /* DDDispatchQueueLogFormatter.h */,
+				766A9E5A18B44C8600DE18DB /* DDDispatchQueueLogFormatter.m */,
+				766A9E5B18B44C8600DE18DB /* DDMultiFormatter.h */,
+				766A9E5C18B44C8600DE18DB /* DDMultiFormatter.m */,
+				766A9E5D18B44C8600DE18DB /* README.txt */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		76E5C05118AF0472009591CA = {
 			isa = PBXGroup;
 			children = (
@@ -133,7 +236,10 @@
 		76E5C06518AF0473009591CA /* spritecollision */ = {
 			isa = PBXGroup;
 			children = (
+				765B025E18C6D12D0061DB27 /* SureShot.caf */,
+				76E5C0B318B079B9009591CA /* Sprite Images */,
 				76E5C0A318AFEDE6009591CA /* Constants.h */,
+				766A9E6818B44CBB00DE18DB /* Logging.h */,
 				76E5C06E18AF0473009591CA /* AppDelegate.h */,
 				76E5C06F18AF0473009591CA /* AppDelegate.m */,
 				76E5C07118AF0474009591CA /* Main.storyboard */,
@@ -141,15 +247,26 @@
 				76E5C07518AF0474009591CA /* ViewController.m */,
 				76E5C07718AF0474009591CA /* MyScene.h */,
 				76E5C07818AF0474009591CA /* MyScene.m */,
+				763CBB2B18B1205D00F58409 /* BonusGenerator.h */,
+				763CBB2C18B1205D00F58409 /* BonusGenerator.m */,
 				76E5C09918AF0651009591CA /* SpaceshipScene.h */,
 				76E5C09A18AF0651009591CA /* SpaceshipScene.m */,
 				76E5C0A018AFE4BA009591CA /* Spaceship.h */,
 				76E5C0A118AFE4BA009591CA /* Spaceship.m */,
+				76E5C0A918B02DA7009591CA /* SpaceGame.h */,
+				76E5C0AA18B02DA7009591CA /* SpaceGame.m */,
 				76E5C0A618B00609009591CA /* Missile.h */,
 				76E5C0A718B00609009591CA /* Missile.m */,
+				76E5C0AE18B07900009591CA /* BonusSprite.h */,
+				76E5C0AF18B07900009591CA /* BonusSprite.m */,
+				76E5C0BE18B09814009591CA /* oooh.caf */,
+				76E5C0B618B0876F009591CA /* shieldon.caf */,
+				76E5C0B818B08B51009591CA /* idiot.caf */,
+				76E5C0BA18B090BC009591CA /* explosion.caf */,
+				76E5C0BC18B090F0009591CA /* fire.caf */,
+				766A9E6918B45DE600DE18DB /* gameover.caf */,
+				766A9E6B18B45F4D00DE18DB /* gameover.png */,
 				76E5C07C18AF0474009591CA /* Images.xcassets */,
-				76E5C09E18AF14E5009591CA /* rocket.png */,
-				76E5C0A418B0000A009591CA /* spark.png */,
 				76E5C06618AF0473009591CA /* Supporting Files */,
 			);
 			path = spritecollision;
@@ -158,6 +275,7 @@
 		76E5C06618AF0473009591CA /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				766A9E4718B44C8600DE18DB /* Lumberjack */,
 				76E5C06718AF0473009591CA /* spritecollision-Info.plist */,
 				76E5C06818AF0473009591CA /* InfoPlist.strings */,
 				76E5C06B18AF0473009591CA /* main.m */,
@@ -182,6 +300,17 @@
 				76E5C08C18AF0474009591CA /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		76E5C0B318B079B9009591CA /* Sprite Images */ = {
+			isa = PBXGroup;
+			children = (
+				76E5C09E18AF14E5009591CA /* rocket.png */,
+				76E5C0A418B0000A009591CA /* spark.png */,
+				76E5C0B118B079B4009591CA /* cherry.png */,
+				76E5C0AC18B03759009591CA /* asteroid.png */,
+			);
+			name = "Sprite Images";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -261,10 +390,21 @@
 			buildActionMask = 2147483647;
 			files = (
 				76E5C0A518B0000B009591CA /* spark.png in Resources */,
+				765B025F18C6D12D0061DB27 /* SureShot.caf in Resources */,
+				76E5C0B718B0876F009591CA /* shieldon.caf in Resources */,
+				76E5C0BB18B090BC009591CA /* explosion.caf in Resources */,
+				766A9E6718B44C8600DE18DB /* README.txt in Resources */,
 				76E5C06A18AF0473009591CA /* InfoPlist.strings in Resources */,
+				76E5C0AD18B03759009591CA /* asteroid.png in Resources */,
+				76E5C0BD18B090F0009591CA /* fire.caf in Resources */,
+				76E5C0B218B079B4009591CA /* cherry.png in Resources */,
 				76E5C09F18AF14E5009591CA /* rocket.png in Resources */,
 				76E5C07D18AF0474009591CA /* Images.xcassets in Resources */,
+				76E5C0BF18B09814009591CA /* oooh.caf in Resources */,
+				766A9E6C18B45F4D00DE18DB /* gameover.png in Resources */,
 				76E5C07318AF0474009591CA /* Main.storyboard in Resources */,
+				766A9E6A18B45DE600DE18DB /* gameover.caf in Resources */,
+				76E5C0B918B08B51009591CA /* idiot.caf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -283,12 +423,24 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				766A9E6418B44C8600DE18DB /* DDContextFilterLogFormatter.m in Sources */,
+				766A9E6218B44C8600DE18DB /* DDLog.m in Sources */,
+				766A9E6318B44C8600DE18DB /* DDTTYLogger.m in Sources */,
 				76E5C07918AF0474009591CA /* MyScene.m in Sources */,
+				766A9E6618B44C8600DE18DB /* DDMultiFormatter.m in Sources */,
 				76E5C07618AF0474009591CA /* ViewController.m in Sources */,
+				766A9E5F18B44C8600DE18DB /* DDAbstractDatabaseLogger.m in Sources */,
+				766A9E6118B44C8600DE18DB /* DDFileLogger.m in Sources */,
 				76E5C0A218AFE4BA009591CA /* Spaceship.m in Sources */,
 				76E5C0A818B00609009591CA /* Missile.m in Sources */,
+				76E5C0AB18B02DA7009591CA /* SpaceGame.m in Sources */,
 				76E5C09B18AF0651009591CA /* SpaceshipScene.m in Sources */,
+				766A9E6518B44C8600DE18DB /* DDDispatchQueueLogFormatter.m in Sources */,
+				76E5C0B018B07900009591CA /* BonusSprite.m in Sources */,
+				763CBB2D18B1205D00F58409 /* BonusGenerator.m in Sources */,
 				76E5C07018AF0473009591CA /* AppDelegate.m in Sources */,
+				766A9E6018B44C8600DE18DB /* DDASLLogger.m in Sources */,
+				766A9E5E18B44C8600DE18DB /* CLIColor.m in Sources */,
 				76E5C06C18AF0473009591CA /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -502,6 +654,7 @@
 				76E5C09518AF0474009591CA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		76E5C09618AF0474009591CA /* Build configuration list for PBXNativeTarget "spritecollisionTests" */ = {
 			isa = XCConfigurationList;
@@ -510,6 +663,7 @@
 				76E5C09818AF0474009591CA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
