@@ -398,7 +398,7 @@ static inline CGFloat skRand(CGFloat low, CGFloat high) {
     
     SKAction* fadeAndExplode = [SKAction group:@[
                                                  [SKAction fadeOutWithDuration:0.1],
-                                                 [SKAction playSoundFileNamed:@"oooh.caf" waitForCompletion:NO]]];
+                                                 [SKAction playSoundFileNamed:@"sweet.caf" waitForCompletion:NO]]];
     SKAction* remove =   [SKAction removeFromParent];
     SKAction* sequence = [SKAction sequence:@[fadeAndExplode, remove]];
     [bonus runAction:sequence];
@@ -443,7 +443,7 @@ static inline CGFloat skRand(CGFloat low, CGFloat high) {
   
   //  [self.backgroundPlayer stop];
   
-  [self.game endGame];
+  //  [self.game endGame];
 }
 
 

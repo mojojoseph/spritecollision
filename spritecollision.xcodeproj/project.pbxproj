@@ -7,8 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		761A648818D515A700189E00 /* yo.caf in Resources */ = {isa = PBXBuildFile; fileRef = 761A648718D515A700189E00 /* yo.caf */; };
+		761A648A18D5175900189E00 /* sweet.caf in Resources */ = {isa = PBXBuildFile; fileRef = 761A648918D5175900189E00 /* sweet.caf */; };
 		763CBB2D18B1205D00F58409 /* BonusGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 763CBB2C18B1205D00F58409 /* BonusGenerator.m */; };
 		765B025F18C6D12D0061DB27 /* SureShot.caf in Resources */ = {isa = PBXBuildFile; fileRef = 765B025E18C6D12D0061DB27 /* SureShot.caf */; };
+		7663EBE018D50DFA0058BF90 /* banana.png in Resources */ = {isa = PBXBuildFile; fileRef = 7663EBDF18D50DFA0058BF90 /* banana.png */; };
+		7663EBE218D511250058BF90 /* orange.png in Resources */ = {isa = PBXBuildFile; fileRef = 7663EBE118D511250058BF90 /* orange.png */; };
 		766A9E5E18B44C8600DE18DB /* CLIColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 766A9E4A18B44C8600DE18DB /* CLIColor.m */; };
 		766A9E5F18B44C8600DE18DB /* DDAbstractDatabaseLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 766A9E4C18B44C8600DE18DB /* DDAbstractDatabaseLogger.m */; };
 		766A9E6018B44C8600DE18DB /* DDASLLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 766A9E4E18B44C8600DE18DB /* DDASLLogger.m */; };
@@ -64,9 +68,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		761A648718D515A700189E00 /* yo.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = yo.caf; sourceTree = "<group>"; };
+		761A648918D5175900189E00 /* sweet.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = sweet.caf; sourceTree = "<group>"; };
 		763CBB2B18B1205D00F58409 /* BonusGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BonusGenerator.h; sourceTree = "<group>"; };
 		763CBB2C18B1205D00F58409 /* BonusGenerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BonusGenerator.m; sourceTree = "<group>"; };
 		765B025E18C6D12D0061DB27 /* SureShot.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = SureShot.caf; sourceTree = "<group>"; };
+		7663EBDF18D50DFA0058BF90 /* banana.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = banana.png; sourceTree = "<group>"; };
+		7663EBE118D511250058BF90 /* orange.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = orange.png; sourceTree = "<group>"; };
 		766A9E4918B44C8600DE18DB /* CLIColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLIColor.h; sourceTree = "<group>"; };
 		766A9E4A18B44C8600DE18DB /* CLIColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLIColor.m; sourceTree = "<group>"; };
 		766A9E4B18B44C8600DE18DB /* DDAbstractDatabaseLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDAbstractDatabaseLogger.h; sourceTree = "<group>"; };
@@ -237,6 +245,8 @@
 			isa = PBXGroup;
 			children = (
 				765B025E18C6D12D0061DB27 /* SureShot.caf */,
+				761A648718D515A700189E00 /* yo.caf */,
+				761A648918D5175900189E00 /* sweet.caf */,
 				76E5C0B318B079B9009591CA /* Sprite Images */,
 				76E5C0A318AFEDE6009591CA /* Constants.h */,
 				766A9E6818B44CBB00DE18DB /* Logging.h */,
@@ -308,6 +318,8 @@
 				76E5C09E18AF14E5009591CA /* rocket.png */,
 				76E5C0A418B0000A009591CA /* spark.png */,
 				76E5C0B118B079B4009591CA /* cherry.png */,
+				7663EBDF18D50DFA0058BF90 /* banana.png */,
+				7663EBE118D511250058BF90 /* orange.png */,
 				76E5C0AC18B03759009591CA /* asteroid.png */,
 			);
 			name = "Sprite Images";
@@ -394,9 +406,12 @@
 				76E5C0B718B0876F009591CA /* shieldon.caf in Resources */,
 				76E5C0BB18B090BC009591CA /* explosion.caf in Resources */,
 				766A9E6718B44C8600DE18DB /* README.txt in Resources */,
+				761A648A18D5175900189E00 /* sweet.caf in Resources */,
+				7663EBE018D50DFA0058BF90 /* banana.png in Resources */,
 				76E5C06A18AF0473009591CA /* InfoPlist.strings in Resources */,
 				76E5C0AD18B03759009591CA /* asteroid.png in Resources */,
 				76E5C0BD18B090F0009591CA /* fire.caf in Resources */,
+				761A648818D515A700189E00 /* yo.caf in Resources */,
 				76E5C0B218B079B4009591CA /* cherry.png in Resources */,
 				76E5C09F18AF14E5009591CA /* rocket.png in Resources */,
 				76E5C07D18AF0474009591CA /* Images.xcassets in Resources */,
@@ -405,6 +420,7 @@
 				76E5C07318AF0474009591CA /* Main.storyboard in Resources */,
 				766A9E6A18B45DE600DE18DB /* gameover.caf in Resources */,
 				76E5C0B918B08B51009591CA /* idiot.caf in Resources */,
+				7663EBE218D511250058BF90 /* orange.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -573,6 +589,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "spritecollision/spritecollision-Prefix.pch";
 				INFOPLIST_FILE = "spritecollision/spritecollision-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SPRITEKIT_TEXTURE_ATLAS_OUTPUT = YES;
 				WRAPPER_EXTENSION = app;
@@ -587,6 +604,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "spritecollision/spritecollision-Prefix.pch";
 				INFOPLIST_FILE = "spritecollision/spritecollision-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SPRITEKIT_TEXTURE_ATLAS_OUTPUT = YES;
 				WRAPPER_EXTENSION = app;
